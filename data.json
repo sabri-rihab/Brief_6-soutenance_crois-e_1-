@@ -1,0 +1,156 @@
+{
+  "employees": [
+    {
+      "email": "tariq@gmail.com",
+      "firstName": "Tariq",
+      "lastName": "Amzil",
+      "telephone": "0712035565",
+      "imgSRC": "/assets/profile_1.png",
+      "role": "IT Technician",
+      "location": "",
+      "isAssigned": false
+    },
+    {
+      "email": "sarah@gmail.com",
+      "firstName": "Sarah",
+      "lastName": "Salah Eddin",
+      "telephone": "0701122334",
+      "imgSRC": "/assets/profile_2.png",
+      "role": "Receptionist",
+      "location": "",
+      "isAssigned": false
+    },
+    {
+      "email": "mohamed@company.com",
+      "firstName": "Mohamed",
+      "lastName": "El Fassi",
+      "telephone": "0709988776",
+      "imgSRC": "/assets/profile_3.png",
+      "role": "Security Agent",
+      "location": "",
+      "isAssigned": false
+    },
+    {
+      "email": "hajar@company.com",
+      "firstName": "hajar",
+      "lastName": "chakir",
+      "telephone": "0712233445",
+      "imgSRC": "/assets/profile_4.png",
+      "role": "Cleaning Staff",
+      "location": "",
+      "isAssigned": false
+    },
+    {
+      "email": "said@company.com",
+      "firstName": "Said",
+      "lastName": "Bakrim",
+      "telephone": "0715566778",
+      "imgSRC": "/assets/profile_5.png",
+      "role": "Manager",
+      "location": "",
+      "isAssigned": false
+    },
+    {
+      "id":"mehdi@company.com",
+      "firstName": "Mehdi",
+      "lastName": "Benani",
+      "telephone": "0703344556",
+      "imgSRC": "/assets/profile_6.png",
+      "role": "HR",
+      "location": "",
+      "isAssigned": false
+    },
+    {
+      "id": "saadia@company.com",
+      "firstName": "Saadia",
+      "lastName": "Sinawer",
+      "telephone": "0718899001",
+      "imgSRC": "/assets/profile_7.png",
+      "role": "Accountant",
+      "location": "",
+      "isAssigned": false
+    },
+    {
+      "id":  "nadia@company.com",
+      "firstName": "Nadia",
+      "lastName": "Bennani",
+      "telephone": "0706677889",
+      "imgSRC": "/assets/profile_8.png",
+      "role": "IT Technician",
+      "location": "",
+      "isAssigned": false
+    },
+    {
+      "id": "amin@company.com",
+      "firstName": "Amin",
+      "lastName": "Marrir",
+      "telephone": "0712211987",
+      "imgSRC": "/assets/profile_9.png",
+      "role": "Receptionist",
+      "location": "",
+      "isAssigned": false
+    },
+    {
+      "id": "youssef@company.com",
+      "firstName": "Youssef",
+      "lastName": "Karim",
+      "telephone": "0709988774",
+      "imgSRC": "/assets/profile_10.png",
+      "role": "Security Agent",
+      "location": "",
+      "isAssigned": false
+    },
+    {
+      "id": "douaa@company.com",
+      "firstName": "Douaa",
+      "lastName": "Oumrani",
+      "telephone": "0714433221",
+      "imgSRC": "/assets/profile_11.png",
+      "role": "Cleaning Staff",
+      "location": "",
+      "isAssigned": false
+    }
+  ],
+
+  "zones": [
+    {
+      "id": "conference_room",
+      "name": "Conference Room",
+      "access": ["Receptionist", "Manager","Cleaning Staff","IT Technician", "HR", "Accountant", "Security Agent"]  
+    },
+    {
+      "id": "server_room",
+      "name": "Server Room",
+      "access": ["IT Technician", "Manager"] 
+    },
+    {
+      "id": "reception",
+      "name": "Reception",
+      "access": ["Receptionist", "Manager","Cleaning Staff"] 
+    },
+    {
+      "id": "security_room",
+      "name": "Security Room",
+      "access": ["Security Agent", "Manager"] 
+    },
+    {
+      "id": "staff_room",
+      "name": "Staff Room",
+      "access": ["Receptionist", "Manager","Cleaning Staff","IT Technician","Receptionist", "HR", "Accountant"] 
+    },
+    {
+      "id": "archives",
+      "name": "Archives Room",
+      "access": ["Manager", "IT Technician"]
+    }
+  ],
+  "roles": [
+    "IT Technician",
+    "Receptionist",
+    "Security Agent",
+    "Cleaning Staff",
+    "Manager",
+    "HR",
+    "Accountant"
+  ]
+}
