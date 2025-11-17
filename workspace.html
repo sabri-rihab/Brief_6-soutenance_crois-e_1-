@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>WorkSpace</title>
+    <style>
+         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8fafc;
+            padding: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="page-title">Manage Your Work Space</h1>
+    
+    <div class="container">
+        <!-- Left Panel -->
+        <div class="left-panel">
+            <div class="tabs">
+                <button class="tab active">All</button>
+                <button class="tab">Assigned</button>
+                <button class="tab">Not-Assigned</button>
+            </div>
+            
+            <div class="employees-section">
+
+                <div class="employee-card">
+                    <button class="close-btn">
+                        <span class="material-icons">close</span>
+                    </button>
+                    <button class="edit-btn">
+                        <span class="material-icons">edit</span>
+                    </button>
+                    <div class="employee-header">
+                        <div class="photo-circle">TC</div>
+                        <div class="employee-info">
+                            <div class="employee-name">Amin Marrir</div>
+                            <div class="employee-role">Receptionist</div>
+                        </div>
+                    </div>
+                    <div class="employee-details">
+                        <!-- <div class="detail-item">
+                            <span class="material-icons">work</span>
+                            <span class="detail-label">Position:</span>
+                            <span class="detail-value">Zone A - Floor 3</span>
+                        </div> -->
+                        <div class="detail-item">
+                            <span class="material-icons">location_on</span>
+                            <span class="detail-label">Location:</span>
+                            <span class="detail-value">staff_room</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+                <button class="add-employee-btn">
+                    <span class="material-icons">add_circle</span>
+                    Add Employee
+                </button>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel"></div>
+    </div>
+</body>
+</html>

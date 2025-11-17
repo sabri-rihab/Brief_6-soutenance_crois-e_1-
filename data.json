@@ -8,7 +8,8 @@
       "imgSRC": "/assets/profile_1.png",
       "role": "IT Technician",
       "location": "",
-      "isAssigned": false
+      "isAssigned": false,
+      "assigned_place" : ""
     },
     {
       "email": "sarah@gmail.com",
@@ -18,7 +19,8 @@
       "imgSRC": "/assets/profile_2.png",
       "role": "Receptionist",
       "location": "",
-      "isAssigned": false
+      "isAssigned": false,
+      "assigned_place" : ""
     },
     {
       "email": "mohamed@company.com",
@@ -28,7 +30,8 @@
       "imgSRC": "/assets/profile_3.png",
       "role": "Security Agent",
       "location": "",
-      "isAssigned": false
+      "isAssigned": false,
+      "assigned_place" : ""
     },
     {
       "email": "hajar@company.com",
@@ -38,7 +41,8 @@
       "imgSRC": "/assets/profile_4.png",
       "role": "Cleaning Staff",
       "location": "",
-      "isAssigned": false
+      "isAssigned": false,
+      "assigned_place" : ""
     },
     {
       "email": "said@company.com",
@@ -48,7 +52,8 @@
       "imgSRC": "/assets/profile_5.png",
       "role": "Manager",
       "location": "",
-      "isAssigned": false
+      "isAssigned": false,
+      "assigned_place" : ""
     },
     {
       "id":"mehdi@company.com",
@@ -58,7 +63,8 @@
       "imgSRC": "/assets/profile_6.png",
       "role": "HR",
       "location": "",
-      "isAssigned": false
+      "isAssigned": false,
+      "assigned_place" : ""
     },
     {
       "id": "saadia@company.com",
@@ -68,7 +74,8 @@
       "imgSRC": "/assets/profile_7.png",
       "role": "Accountant",
       "location": "",
-      "isAssigned": false
+      "isAssigned": false,
+      "assigned_place" : ""
     },
     {
       "id":  "nadia@company.com",
@@ -78,7 +85,8 @@
       "imgSRC": "/assets/profile_8.png",
       "role": "IT Technician",
       "location": "",
-      "isAssigned": false
+      "isAssigned": false,
+      "assigned_place" : ""
     },
     {
       "id": "amin@company.com",
@@ -88,7 +96,8 @@
       "imgSRC": "/assets/profile_9.png",
       "role": "Receptionist",
       "location": "",
-      "isAssigned": false
+      "isAssigned": false,
+      "assigned_place" : ""
     },
     {
       "id": "youssef@company.com",
@@ -98,7 +107,8 @@
       "imgSRC": "/assets/profile_10.png",
       "role": "Security Agent",
       "location": "",
-      "isAssigned": false
+      "isAssigned": false,
+      "assigned_place" : ""
     },
     {
       "id": "douaa@company.com",
@@ -108,7 +118,8 @@
       "imgSRC": "/assets/profile_11.png",
       "role": "Cleaning Staff",
       "location": "",
-      "isAssigned": false
+      "isAssigned": false,
+      "assigned_place" : ""
     }
   ],
 
