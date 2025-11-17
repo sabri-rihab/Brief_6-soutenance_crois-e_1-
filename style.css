@@ -128,6 +128,7 @@ body {
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    margin: 2rem;
 }
 
 .tabs {
@@ -162,6 +163,8 @@ body {
 
 .employees-section {
     padding: 1.5rem;
+    height: 40em;
+    overflow: auto;
 }
 
 .employee-card {
@@ -218,6 +221,9 @@ body {
     font-weight: 600;
     font-size: 1.25rem;
     flex-shrink: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .employee-info {
@@ -332,5 +338,137 @@ body {
 
     .right-panel {
         min-height: 400px;
+        margin: 2rem;
     }
 }
+
+
+
+/*      Add Form    */
+        .backgroungDiv{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-color: #1e1b4b6e;
+            top: 0;
+            /* visibility:hidden;
+            pointer-events: none; */
+
+        }
+        .form-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            padding: 30px;
+            width: 100%;
+            max-width: 480px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6c757d;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: #343a40;
+        }
+
+        h1 {
+            color: #2c5aa0;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #dc3545;
+            font-size: 11px;
+            margin-bottom: 25px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            font-size: 13px;
+            color: #495057;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .required::after {
+            content: " *";
+            color: #dc3545;
+        }
+
+        input, select {
+            padding: 10px 12px;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            font-size: 14px;
+            background: #f8f9fa;
+            transition: all 0.2s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #2c5aa0;
+            background: white;
+        }
+
+        input::placeholder {
+            color: #adb5bd;
+        }
+
+        select {
+            cursor: pointer;
+            color: #6c757d;
+        }
+
+        .submit-btn {
+            grid-column: 1 / -1;
+            background: #495057;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.2s;
+        }
+
+        .submit-btn:hover {
+            background: #46e07f;
+        }
+
+        .submit-btn:active {
+            transform: translateY(1px);
+        }
+        .hidden{
+            visibility: hidden;
+            pointer-events: none;
+        }
