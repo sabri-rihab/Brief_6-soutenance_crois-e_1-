@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    /* padding-right: 1rem; */
     box-sizing: border-box;
 }
 
@@ -120,7 +119,8 @@ body {
 .container {
     display: flex;
     gap: 2rem;
-    max-width: 1400px;
+    max-width: 1440px;
+    height: auto;
 }
 
 .left-panel {
@@ -324,16 +324,76 @@ body {
 
 .right-panel {
     flex: 1;
-    min-height: 550px;
+    min-height: 500px;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
     background: white;
     border: 2px solid #e2e8f0;
     border-radius: 12px;
-    background-image: url(assets/workspace.jpg);
-    background-size:contain;
-    background-repeat: no-repeat;
+    position: relative;
+}
+.right-panel img{
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
 }
 
-@media (max-width: 768px) {
+.rooms-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 0, 0, 0.241);
+    display: grid;
+    grid-template-columns: repeat(13, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+.conference{
+    grid-row: 1;
+    grid-column:1 / 6 ;
+    background-color: rgba(255, 255, 0, 0.439);
+}
+.archives{
+    grid-row: 1;
+    grid-column:8 / 11 ;
+    background-color: rgba(128, 0, 128, 0.445);
+}
+.security{
+    grid-row: 1;
+    grid-column:11 / 14 ;
+    background-color: rgba(255, 255, 0, 0.439);
+}
+.reception{
+    grid-row:2 / 4 ;
+    grid-column:1 / 6 ;
+    background-color: rgba(128, 0, 128, 0.445);
+}
+.staff{
+    grid-row: 3;
+    grid-column:8 / 11 ;
+    background-color: rgba(255, 255, 0, 0.439);
+
+}
+.server{
+    grid-row: 3;
+    grid-column: 11 / 14;
+    background-color: rgba(128, 0, 128, 0.445);
+}
+.zone{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.zone-btn{
+    border-radius: 50%;
+    /* background: #3b82f6; */
+    color: #3b82f6;
+    cursor: pointer;
+    justify-self: center;
+}
+@media (max-width: 868px) {
     .container {
         flex-direction: column;
         /* padding: 0 1rem; */
@@ -344,10 +404,8 @@ body {
 
     .right-panel {
         min-height: 400px;
-        margin: 2rem;
         transform: rotate(90deg);
-        height: auto;
-        width: 700px;
+        margin-top: 10em;
     }
 }
 

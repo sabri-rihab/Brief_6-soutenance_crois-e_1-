@@ -87,7 +87,10 @@ async function ManageWorkSpace(){
         const email = document.getElementById('email');
         const phone = document.getElementById('phone');
 
-        const regexFN = "/^([A-Za-z]{3,50})+\s[A-Za-z]{3,50}]$/"
+        const regexFN = "/^([A-Za-z]{3,50})+\s[A-Za-z]{3,50}]$/";
+
+        /*--------------------------------------    ZONES   -------------------------------------- */
+        
 
         console.log(data);
         console.log(zones);

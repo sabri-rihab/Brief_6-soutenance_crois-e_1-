@@ -8,7 +8,16 @@
       "imgSRC": "assets/profile_1.jpg",
       "role": "IT Technician",
       "isAssigned": false,
-      "assigned_place": ""
+      "assigned_place": "",
+      "experience": [
+        {
+          "id":1,
+          "post": "",
+          "company": "",
+          "from": "",
+          "to":""
+        }
+      ]
     },
     {
       "id": "sarah@gmail.com",
@@ -18,7 +27,17 @@
       "imgSRC": "assets/profile_2.jpg",
       "role": "Receptionist",
       "isAssigned": false,
-      "assigned_place": ""
+      "assigned_place": "",
+      "experience": [
+        {
+          "id":1,
+          "post": "",
+          "company": "",
+          "from": "",
+          "to":""
+        }
+      ]
+
     },
     {
       "id": "mohamed@company.com",
@@ -28,7 +47,16 @@
       "imgSRC": "assets/profile_3.jpg",
       "role": "Security Agent",
       "isAssigned": false,
-      "assigned_place": ""
+      "assigned_place": "",
+      "experience": [
+        {
+          "id":1,
+          "post": "",
+          "company": "",
+          "from": "",
+          "to":""
+        }
+      ]
     },
     {
       "id": "hajar@company.com",
@@ -38,7 +66,16 @@
       "imgSRC": "assets/profile_4.jpg",
       "role": "Cleaning Staff",
       "isAssigned": false,
-      "assigned_place": ""
+      "assigned_place": "",
+      "experience": [
+        {
+          "id":1,
+          "post": "",
+          "company": "",
+          "from": "",
+          "to":""
+        }
+      ]
     },
     {
       "id": "said@company.com",
@@ -48,7 +85,16 @@
       "imgSRC": "assets/profile_5.jpg",
       "role": "Manager",
       "isAssigned": false,
-      "assigned_place": ""
+      "assigned_place": "",
+      "experience": [
+        {
+          "id":1,
+          "post": "",
+          "company": "",
+          "from": "",
+          "to":""
+        }
+      ]
     },
     {
       "id": "mehdi@company.com",
@@ -58,7 +104,16 @@
       "imgSRC": "assets/profile_6.jpg",
       "role": "HR",
       "isAssigned": false,
-      "assigned_place": ""
+      "assigned_place": "",
+      "experience": [
+        {
+          "id":1,
+          "post": "",
+          "company": "",
+          "from": "",
+          "to":""
+        }
+      ]
     },
     {
       "id": "saadia@company.com",
@@ -68,7 +123,16 @@
       "imgSRC": "assets/profile_7.jpg",
       "role": "Accountant",
       "isAssigned": false,
-      "assigned_place": ""
+      "assigned_place": "",
+      "experience": [
+        {
+          "id":1,
+          "post": "",
+          "company": "",
+          "from": "",
+          "to":""
+        }
+      ]
     },
     {
       "id": "nadia@company.com",
@@ -78,7 +142,16 @@
       "imgSRC": "assets/profile_8.jpg",
       "role": "IT Technician",
       "isAssigned": false,
-      "assigned_place": ""
+      "assigned_place": "",
+      "experience": [
+        {
+          "id":1,
+          "post": "",
+          "company": "",
+          "from": "",
+          "to":""
+        }
+      ]
     },
     {
       "id": "amin@company.com",
@@ -88,7 +161,16 @@
       "imgSRC": "assets/profile_9.jpg",
       "role": "Receptionist",
       "isAssigned": false,
-      "assigned_place": ""
+      "assigned_place": "",
+      "experience": [
+        {
+          "id":1,
+          "post": "",
+          "company": "",
+          "from": "",
+          "to":""
+        }
+      ]
     },
     {
       "id": "youssef@company.com",
@@ -98,7 +180,16 @@
       "imgSRC": "assets/profile_10.jpg",
       "role": "Security Agent",
       "isAssigned": false,
-      "assigned_place": ""
+      "assigned_place": "",
+      "experience": [
+        {
+          "id":1,
+          "post": "",
+          "company": "",
+          "from": "",
+          "to":""
+        }
+      ]
     },
     {
       "id": "douaa@company.com",
@@ -108,39 +199,54 @@
       "imgSRC": "assets/profile_11.jpg",
       "role": "Cleaning Staff",
       "isAssigned": false,
-      "assigned_place": ""
+      "assigned_place": "",
+      "experience": [
+        {
+          "id":1,
+          "post": "",
+          "company": "",
+          "from": "",
+          "to":""
+        }
+      ]
     }
   ],
   "zones": [
     {
       "id": "conference_room",
       "name": "Conference Room",
-      "access": ["Receptionist", "Manager", "Cleaning Staff", "IT Technician", "HR", "Accountant", "Security Agent"]
+      "access": ["Receptionist", "Manager", "Cleaning Staff", "IT Technician", "HR", "Accountant", "Security Agent"],
+      "capacity" : 10
     },
     {
       "id": "server_room",
       "name": "Server Room",
-      "access": ["IT Technician", "Manager"]
+      "access": ["IT Technician", "Manager"],
+      "capacity" : 10
     },
     {
       "id": "reception",
       "name": "Reception",
-      "access": ["Receptionist", "Manager", "Cleaning Staff"]
+      "access": ["Receptionist", "Manager", "Cleaning Staff"],
+      "capacity" : 10
     },
     {
       "id": "security_room",
       "name": "Security Room",
-      "access": ["Security Agent", "Manager"]
+      "access": ["Security Agent", "Manager"],
+      "capacity" : 10
     },
     {
       "id": "staff_room",
       "name": "Staff Room",
-      "access": ["Receptionist", "Manager", "Cleaning Staff", "IT Technician", "HR", "Accountant"]
+      "access": ["Receptionist", "Manager", "Cleaning Staff", "IT Technician", "HR", "Accountant"],
+      "capacity" : 10
     },
     {
       "id": "archives",
       "name": "Archives Room",
-      "access": ["Manager", "IT Technician"]
+      "access": ["Manager", "IT Technician"],
+      "capacity" : 10
     }
   ],
   "roles": [
