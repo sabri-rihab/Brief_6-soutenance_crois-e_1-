@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    /* padding-right: 1rem; */
     box-sizing: border-box;
 }
 
@@ -105,7 +106,7 @@ body {
 
 
 
-/*  Work Space  */
+/*  Work Space  page */
 .page-title {
     font-size: 2rem;
     font-weight: 600;
@@ -123,7 +124,8 @@ body {
 }
 
 .left-panel {
-    width: 362px;
+    width: 330px;
+    max-width: calc(100% - 4rem);
     background: white;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -163,7 +165,7 @@ body {
 
 .employees-section {
     padding: 1.5rem;
-    height: 40em;
+    height: 27em;
     overflow: auto;
 }
 
@@ -292,14 +294,6 @@ body {
     font-size: 20px;
 }
 
-.right-panel {
-    flex: 1;
-    min-height: 747px;
-    background: white;
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
-}
-
 .add-employee-btn {
     width: 100%;
     padding: 1rem;
@@ -327,11 +321,23 @@ body {
     font-size: 22px;
 }
 
+
+.right-panel {
+    flex: 1;
+    min-height: 550px;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    background-image: url(assets/workspace.jpg);
+    background-size:contain;
+    background-repeat: no-repeat;
+}
+
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
+        /* padding: 0 1rem; */
     }
-
     .left-panel {
         width: 100%;
     }
@@ -339,6 +345,9 @@ body {
     .right-panel {
         min-height: 400px;
         margin: 2rem;
+        transform: rotate(90deg);
+        height: auto;
+        width: 700px;
     }
 }
 

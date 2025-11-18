@@ -81,6 +81,14 @@ async function ManageWorkSpace(){
         })
 
 
+        /*  validation des champs   => Regex */
+        const firstN = document.getElementById('firstN'); // calling inputs
+        const lastN = document.getElementById('lastN');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phone');
+
+        const regexFN = "/^([A-Za-z]{3,50})+\s[A-Za-z]{3,50}]$/"
+
         console.log(data);
         console.log(zones);
         console.log(employees);
