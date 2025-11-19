@@ -199,6 +199,14 @@ zoneBtn.forEach((btn) => {
 
 const AssignedEmplContainer = document.querySelectorAll('.assignedEmpls');
 
+
+//calling the details spans
+const imgDetail = document.querySelector('.imageDetails') ;
+const nameDetail = document.querySelector('.nameDetails') ;
+const roleDetail = document.querySelector('.roleDetails') ;
+const emailDetail = document.querySelector('.emailDetails') ;
+const phoneDetail = document.querySelector('.phoneDetails') ;
+const zoneDetail = document.querySelector('.zoneDetails') ;
 // click on employee to reserve
 zoneEmpl.addEventListener('click', (e) => {
     const selectedEmpl = e.target.closest('.Szone');
@@ -228,13 +236,25 @@ zoneEmpl.addEventListener('click', (e) => {
                     <div id="${empl.id}" class="photo-circle selected" style="background-image: url(${empl.imgSRC});"></div>
                     `;
                 }
-                const selectedEmpls = document.querySelectorAll('.selected'); // rani khedama hna <= <= <= <= <= <=
+
+                // Calling the details container and assigne the correct employee information to it
+                const selectedEmpls = document.querySelectorAll('.selected'); 
+                
                 selectedEmpls.forEach((sEmpl) => {
-                    console.log(sEmpl);
-                    sEmpl.addEventListener('click', () => {
+                    sEmpl.addEventListener('click', (event) => {
+                        const TheEmplID = event.target.closest('.selected').id;
+                        const TheEmpl = employees.find(empl => empl.id === TheEmplID);
+                        console.log(TheEmpl);
                         detailsEmplContainer.classList.remove('hidden');
+                        imgDetail.style.backgroundImage = `url(${TheEmpl.imgSRC})`;
+                        nameDetail.innerHTML = `${TheEmpl.firstName} ${TheEmpl.lastName}`;
+                        roleDetail.innerHTML = `${TheEmpl.role}`;
+                        emailDetail.innerHTML = `${TheEmpl.id}`;
+                        phoneDetail.innerHTML = `${TheEmpl.telephone}`;
+                        zoneDetail.innerHTML = `${TheEmpl.assigned_place}`;
                     })
                 })
+
             });
             zoneEmpl.classList.add('hidden');
         }
