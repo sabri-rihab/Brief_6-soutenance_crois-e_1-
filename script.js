@@ -60,10 +60,8 @@ async function ManageWorkSpace(){
         })
 
         const closeFormBtn = document.getElementById('form-close-btn');
-        console.log(closeFormBtn);
         closeFormBtn.addEventListener('click', () => {
             backgroungDiv.classList.add('hidden');
-            console.log("testing");
         })
 
         /*  form validation */
@@ -90,7 +88,20 @@ async function ManageWorkSpace(){
         const regexFN = "/^([A-Za-z]{3,50})+\s[A-Za-z]{3,50}]$/";
 
         /*--------------------------------------    ZONES   -------------------------------------- */
-        
+        const zoneBtn = document.querySelectorAll('.zone-btn');
+        const zoneEmpl = document.getElementById('zone-employees');
+        zoneBtn.forEach((btn) => {
+            console.log(zoneEmpl); //i am still not sure this line does
+            btn.addEventListener('click',(e) => {
+                e.stopPropagation();
+                zoneEmpl.classList.remove('hidden');
+            })
+        })
+        document.addEventListener('click',(e) => {
+            if(!zoneEmpl.contains(e.target)){
+                zoneEmpl.classList.add('hidden');
+            }
+        })
 
         console.log(data);
         console.log(zones);
