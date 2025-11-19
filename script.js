@@ -90,14 +90,49 @@ async function ManageWorkSpace(){
         /*--------------------------------------    ZONES   -------------------------------------- */
         const zoneBtn = document.querySelectorAll('.zone-btn');
         const zoneEmpl = document.getElementById('zone-employees');
+        let SelectedZone = {}
         zoneBtn.forEach((btn) => {
-            console.log(zoneEmpl); //i am still not sure this line does
             btn.addEventListener('click',(e) => {
                 e.stopPropagation();
+                zoneEmpl.innerHTML = "";
                 zoneEmpl.classList.remove('hidden');
+                zones.forEach((zone) => {
+                    if(e.target.id === zone.id){
+                        SelectedZone = zone;
+                        var selectedZoneID = zone.id;
+                    }
+                })
+                employees.forEach((empl) => {
+                    SelectedZone.access.forEach((elm) => {
+                        if(empl.role === elm){
+                            zoneEmpl.innerHTML += `
+                                <div id="${empl.id}" class="employee-header Szone">
+                                    <div class="photo-circle" style="background-image: url(${empl.imgSRC});" ></div>
+                                    <div class="employee-info">
+                                        <div class="employee-name">${empl.firstName} ${empl.lastName}</div>
+                                        <div class="employee-role">${empl.role}</div>
+                                    </div>
+                                </div>
+                            `
+                        }
+                    })
+                })
             })
         })
-        document.addEventListener('click',(e) => {
+        const SelectedEmployees = document.querySelectorAll('.Szone');
+        SelectedEmployees.forEach((sEmpl) => {
+            sEmpl.addEventListener('click', (e) => {
+                employees.forEach((empl) => {
+                    if(e.target.id === empl.id){
+                    console.log(empl);
+
+                    }
+                })
+            })
+        })
+
+
+        document.addEventListener('click',(e) => { //close the window if we clicked outside it
             if(!zoneEmpl.contains(e.target)){
                 zoneEmpl.classList.add('hidden');
             }
@@ -114,72 +149,3 @@ async function ManageWorkSpace(){
     }
 }
 ManageWorkSpace();
-
-// fetch("data.json")
-// .then ((response) => {
-//     if (!response.ok) {
-//         throw Error ("Error fecth data");
-//     }  
-//     return response.json();      
-// }
-// )
-// .then ( (employees) => {
-//     console.log(employees)
-// }
-// ).catch((error) => {
-//         console.error("Failed to fetch data:", error);
-//     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// fetch("data.json")
-//     .then((response) => {
-//         if (!response.ok) {
-//             throw new Error(`HTTP error! status: ${response.status}`);
-//         }  
-//         return response.json();      
-//     })
-//     .then((employees) => {
-//         console.log(employees);
-//     })
-//     .catch((error) => {
-//         console.error("Fetch failed:", error);
-//         // Handle the error (show message to user, etc.)
-//     });
-
-
-
-// fetch("data.json")
-//     .then((response) => {
-//         if (!response.ok) {
-//             throw new Error(`HTTP error! status: ${response.status}`);
-//         }  
-//         return response.json();      
-//     })
-//     .then((data) => {
-//         console.log("Employees:", data.employees);
-//         console.log("Zones:", data.zones);
-//         console.log("Roles:", data.roles);
-        
-//         // Access individual employees
-//         data.employees.forEach(employee => {
-//             console.log(`Employee: ${employee.firstName} ${employee.lastName}, ID: ${employee.id}`);
-//         });
-//     })
-//     .catch((error) => {
-//         console.error("Failed to fetch data:", error);
-//     });

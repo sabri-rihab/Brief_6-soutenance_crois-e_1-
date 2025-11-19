@@ -209,6 +209,7 @@ body {
     align-items: center;
     gap: 1rem;
     margin-bottom: 0.75rem;
+    cursor: pointer;
 }
 
 .photo-circle {
@@ -383,7 +384,11 @@ body {
 #zone-employees{
     width: 300px;
     height: 250px;
-    background: yellow;
+    background: white;
+    border-radius: 15px;
+    padding: 1rem;
+    overflow: auto;
+    scrollbar-color: transparent transparent;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -416,6 +421,9 @@ body {
         min-height: 400px;
         transform: rotate(90deg);
         margin-top: 10em;
+    }
+    #zone-employees{
+        transform: rotate(-90deg);
     }
 }
 
