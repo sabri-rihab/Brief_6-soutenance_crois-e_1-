@@ -8,7 +8,7 @@ async function ManageWorkSpace(){
         const employees = data.employees;
 
         const employees_container = document.querySelector('.employees-section');
-        const assignedState = "No Assigned";
+        const assignedState = "Not Assigned";
         const assignedP = document.getElementById('assignedState');
         employees.map(empl => {
             // if(empl.isAssigned == true){
@@ -231,13 +231,25 @@ zoneEmpl.addEventListener('click', (e) => {
             zoneEmpl.classList.add('hidden');
         }
     });
-    
 });
+    const selectedEmpls = document.querySelectorAll('.selected'); // rani khedama hna <= <= <= <= <= <=
+    console.log(selectedEmpls);
+    selectedEmpls.forEach((sEmpl) => {
+        console.log(sEmpl.id);
+    })
 
         document.addEventListener('click',(e) => { //close the window if we clicked outside it
             if(!zoneEmpl.contains(e.target)){
                 zoneEmpl.classList.add('hidden');
             }
+        })
+
+
+
+        const closeDetails = document.querySelector('.details-close');
+        const DetailsEmp = document.querySelector('.details');
+        closeDetails.addEventListener('click', () => {
+            DetailsEmp.classList.add('hidden');
         })
 
         console.log(data);

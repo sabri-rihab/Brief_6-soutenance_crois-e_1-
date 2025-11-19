@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=close" />
     <link rel="stylesheet" href="style.css">
     <title>WorkSpace</title>
     <style>
@@ -84,7 +83,6 @@
             <img src="assets/workspace2.png" alt="">
 
             <div id="zone-employees" class="hidden"></div>
-            <!-- <div id="zone-employees" class="hidden"><div class="emplContainer"></div></div> -->
 
             <div class="rooms-container">
                 <div class="zone conference">
@@ -96,7 +94,7 @@
                     <span id="archives" class="zone-btn material-icons">add_circle</span>
                 </div>
                 <div class="zone security">
-                    <div style="border: 1px solid red;" class="assignedEmpls security_room"></div>
+                    <div class="assignedEmpls security_room"></div>
                     <span id="security_room" class="zone-btn material-icons">add_circle</span>
                 </div>
                 <div class="zone reception">
@@ -114,6 +112,46 @@
             </div>
         </div>
     </div>
+
+    
+<div class="backgroungDiv details hidden">
+    <div class="detailsEmpl">
+        <span class="material-icons details-close">close</span>
+
+        <div id="${empl.id}" class="employee-header Szone">
+            <div class="photo-circle" style="background-image: url(assets/profile_10.jpg);" ></div>
+            <div class="employee-info">
+                <div class="employee-name">Rihab Sabri</div>
+                <div class="employee-role">IT Technicien</div>
+            </div>
+        </div>
+        
+        <div class="employee-details">
+            <div class="detail-item">
+                <span class="material-icons">mail</span>                    
+                <span class="detail-label">Email : </span>
+                <span class="detail-value email">rihabsabri21@gmail.com</span>
+            </div>
+            <div class="detail-item">
+                <span class="material-icons">call</span>                   
+                <span class="detail-label">Phone :</span>
+                <span class="detail-value email">0622113344</span>
+            </div>
+            <div class="detail-item">
+                <span class="material-icons">location_on</span>                    
+                <span class="detail-label">Assigned Zone :</span>
+                <span class="detail-value email">Staff-Room</span>
+            </div>
+        </div>
+
+        <div class="employee-links">
+            <a href="#"><img class="links" src="assets/discord.png" alt=""></a>
+            <a href="#"><img class="links" src="assets/github.png" alt=""></a>
+            <a href="#"><img class="links" src="assets/linkedin.png" alt=""></a>
+        </div>
+
+    </div>
+</div>
     <script src="script.js"></script>
 </body>
 </html>
