@@ -203,7 +203,8 @@ const AssignedEmplContainer = document.querySelectorAll('.assignedEmpls');
 zoneEmpl.addEventListener('click', (e) => {
     const selectedEmpl = e.target.closest('.Szone');
     const clickedID = selectedEmpl.id;
-
+    const detailsEmplContainer = document.querySelector('.details');
+    
     // load reservations 
     zoneReservations = JSON.parse(localStorage.getItem("zoneReservations")) || [];
     employees.forEach((empl) => {
@@ -224,19 +225,22 @@ zoneEmpl.addEventListener('click', (e) => {
             AssignedEmplContainer.forEach((container) => {
                 if (container.classList.contains(selectedZoneID)) {
                     container.innerHTML += `
-                        <div id="${empl.id}" class="photo-circle selected" style="background-image: url(${empl.imgSRC});"></div>
+                    <div id="${empl.id}" class="photo-circle selected" style="background-image: url(${empl.imgSRC});"></div>
                     `;
                 }
+                const selectedEmpls = document.querySelectorAll('.selected'); // rani khedama hna <= <= <= <= <= <=
+                selectedEmpls.forEach((sEmpl) => {
+                    console.log(sEmpl);
+                    sEmpl.addEventListener('click', () => {
+                        detailsEmplContainer.classList.remove('hidden');
+                    })
+                })
             });
             zoneEmpl.classList.add('hidden');
         }
     });
-});
-    const selectedEmpls = document.querySelectorAll('.selected'); // rani khedama hna <= <= <= <= <= <=
     console.log(selectedEmpls);
-    selectedEmpls.forEach((sEmpl) => {
-        console.log(sEmpl.id);
-    })
+});
 
         document.addEventListener('click',(e) => { //close the window if we clicked outside it
             if(!zoneEmpl.contains(e.target)){
