@@ -179,7 +179,7 @@
       "telephone": "0709988774",
       "imgSRC": "assets/profile_10.jpg",
       "role": "Security Agent",
-      "isAssigned": false,
+      "isAssigned": true,
       "assigned_place": "",
       "experience": [
         {
@@ -199,7 +199,7 @@
       "imgSRC": "assets/profile_11.jpg",
       "role": "Cleaning Staff",
       "isAssigned": false,
-      "assigned_place": "",
+      "assigned_place": "security_room",
       "experience": [
         {
           "id":1,

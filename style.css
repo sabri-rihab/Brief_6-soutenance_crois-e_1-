@@ -332,11 +332,13 @@ body {
     border: 2px solid #e2e8f0;
     border-radius: 12px;
     position: relative;
+    z-index: 1;
 }
 .right-panel img{
     width: 100%;
     height: 100%;
     border-radius: 12px;
+    z-index: 2;
 }
 
 .rooms-container{
@@ -415,6 +417,13 @@ body {
     margin-bottom: 1rem;
     padding: 2px;
 }
+.selected{
+    margin-top: -15px;
+}
+.selected:hover{
+    transform: translateY(-15px);
+    transition: transform 0.3s ease-in;
+}
 @media (max-width: 750px) {
     .container {
         flex-direction: column;
@@ -447,8 +456,7 @@ body {
             height: 100%;
             background-color: #1e1b4b6e;
             top: 0;
-            /* visibility:hidden;
-            pointer-events: none; */
+            z-index: 10;
 
         }
         .form-container {
@@ -462,6 +470,8 @@ body {
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            overflow: hidden;
+            scrollbar-color: transparent;
         }
 
         .close-btn {
@@ -555,6 +565,7 @@ body {
             cursor: pointer;
             margin-top: 8px;
             transition: background 0.2s;
+            position: fixed;
         }
 
         .submit-btn:hover {
@@ -567,4 +578,13 @@ body {
         .hidden{
             visibility: hidden;
             pointer-events: none;
+        }
+        #assignedState{
+            color: white;
+            background: rgb(242, 89, 89);
+            width: 7rem;
+            padding: 2px;
+            text-align: center;
+            border-radius: 25px;
+            /* background: rgb(75, 156, 75); */
         }

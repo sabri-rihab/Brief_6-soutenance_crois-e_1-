@@ -8,34 +8,40 @@ async function ManageWorkSpace(){
         const employees = data.employees;
 
         const employees_container = document.querySelector('.employees-section');
-
+        const assignedState = "No Assigned";
+        const assignedP = document.getElementById('assignedState');
         employees.map(empl => {
-            employees_container.innerHTML += `
-                <div id="${empl.id}" class="employee-card">
-                    <button class="close-btn">
-                        <span class="material-icons">close</span>
-                    </button>
-                    <button class="edit-btn">
-                        <span class="material-icons">edit</span>
-                    </button>
-                    <div class="employee-header">
-                        <div class="photo-circle" style="background-image: url(${empl.imgSRC});" ></div>
-                        <div class="employee-info">
-                            <div class="employee-name">${empl.firstName} ${empl.lastName}</div>
-                            <div class="employee-role">${empl.role}</div>
+            // if(empl.isAssigned == true){
+            //     assignedState = "Assigned";
+            //     assignedP.style.background = 'rgb(75, 156, 75)';
+            // }
+                employees_container.innerHTML += `
+                    <div id="${empl.id}" class="employee-card">
+                        <button class="close-btn">
+                            <span class="material-icons">close</span>
+                        </button>
+                        <button class="edit-btn">
+                            <span class="material-icons">edit</span>
+                        </button>
+                        <div class="employee-header">
+                            <div class="photo-circle" style="background-image: url(${empl.imgSRC});" ></div>
+                            <div class="employee-info">
+                                <div class="employee-name">${empl.firstName} ${empl.lastName}</div>
+                                <div class="employee-role">${empl.role}</div>
+                            </div>
+                        </div>
+                        <div class="employee-details">
+                            <div class="detail-item">
+                                <span class="material-icons">location_on</span>
+                                <span class="detail-label">Location:</span>
+                                <span class="detail-value">${empl.assigned_place}</span>
+                            </div>
+                            <p id="assignedState" >${assignedState}</p>
                         </div>
                     </div>
-                    <div class="employee-details">
-                        <div class="detail-item">
-                            <span class="material-icons">location_on</span>
-                            <span class="detail-label">Location:</span>
-                            <span class="detail-value">${empl.assigned_place}</span>
-                        </div>
-                    </div>
-                </div>
-
-
-            `
+    
+    
+                `
         }).join();
 
         /* handle employees menu */
@@ -62,6 +68,7 @@ async function ManageWorkSpace(){
         const closeFormBtn = document.getElementById('form-close-btn');
         closeFormBtn.addEventListener('click', () => {
             backgroungDiv.classList.add('hidden');
+            // backgroungDiv.
         })
 
         /*  form validation */
@@ -203,6 +210,7 @@ zoneEmpl.addEventListener('click', (e) => {
         if (empl.id === clickedID) {
             const countCapacity = zoneReservations.filter(r => r.zoneID === selectedZoneID).length;
             if (countCapacity >= SelectedZone.capacity) {
+                zoneEmpl.classList.add('hidden');
                 alert("This room is already full!");
                 return; 
             }
@@ -216,12 +224,14 @@ zoneEmpl.addEventListener('click', (e) => {
             AssignedEmplContainer.forEach((container) => {
                 if (container.classList.contains(selectedZoneID)) {
                     container.innerHTML += `
-                        <div class="photo-circle selected" style="background-image: url(${empl.imgSRC});"></div>
+                        <div id="${empl.id}" class="photo-circle selected" style="background-image: url(${empl.imgSRC});"></div>
                     `;
                 }
             });
+            zoneEmpl.classList.add('hidden');
         }
     });
+    
 });
 
         document.addEventListener('click',(e) => { //close the window if we clicked outside it
