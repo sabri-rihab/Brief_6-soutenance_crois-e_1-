@@ -88,49 +88,141 @@ async function ManageWorkSpace(){
         const regexFN = "/^([A-Za-z]{3,50})+\s[A-Za-z]{3,50}]$/";
 
         /*--------------------------------------    ZONES   -------------------------------------- */
-        const zoneBtn = document.querySelectorAll('.zone-btn');
-        const zoneEmpl = document.getElementById('zone-employees');
-        let SelectedZone = {}
-        zoneBtn.forEach((btn) => {
-            btn.addEventListener('click',(e) => {
-                e.stopPropagation();
-                zoneEmpl.innerHTML = "";
-                zoneEmpl.classList.remove('hidden');
-                zones.forEach((zone) => {
-                    if(e.target.id === zone.id){
-                        SelectedZone = zone;
-                        var selectedZoneID = zone.id;
-                    }
-                })
-                employees.forEach((empl) => {
-                    SelectedZone.access.forEach((elm) => {
-                        if(empl.role === elm){
-                            zoneEmpl.innerHTML += `
-                                <div id="${empl.id}" class="employee-header Szone">
-                                    <div class="photo-circle" style="background-image: url(${empl.imgSRC});" ></div>
-                                    <div class="employee-info">
-                                        <div class="employee-name">${empl.firstName} ${empl.lastName}</div>
-                                        <div class="employee-role">${empl.role}</div>
-                                    </div>
-                                </div>
-                            `
-                        }
-                    })
-                })
+        // const zoneBtn = document.querySelectorAll('.zone-btn');
+        // const zoneEmpl = document.getElementById('zone-employees');
+        // let selectedZoneID = "";
+        // let SelectedZone = {};
+        // zoneReservations = [];
+        // localStorage.setItem(zoneReservations); /// set the reservation is the localStorage
+        // zoneBtn.forEach((btn) => {
+        //     btn.addEventListener('click',(e) => {
+        //         e.stopPropagation();
+        //         zoneEmpl.innerHTML = "";
+        //         zoneEmpl.classList.remove('hidden');
+        //         zones.forEach((zone) => {
+        //             if(e.target.id === zone.id){
+        //                 SelectedZone = zone;
+        //                 selectedZoneID = zone.id;
+        //             }
+        //         })
+        //         zoneEmpl.innerHTML += `<p id="zoneName">${SelectedZone.id}</p>`
+        //         employees.forEach((empl) => {
+        //             SelectedZone.access.forEach((elm) => {
+        //                 if(empl.role === elm && empl.isAssigned === false && countCapacity <= SelectedZone.capacity){
+        //                     zoneEmpl.innerHTML += `
+        //                         <div id="${empl.id}" class="employee-header Szone">
+        //                             <div class="photo-circle" style="background-image: url(${empl.imgSRC});" ></div>
+        //                             <div class="employee-info">
+        //                                 <div class="employee-name">${empl.firstName} ${empl.lastName}</div>
+        //                                 <div class="employee-role">${empl.role}</div>
+        //                             </div>
+        //                         </div>
+        //                     `
+        //                 }
+        //             })
+        //         })
+        //     })
+        // })
+
+        // const AssignedEmplContainer = document.querySelectorAll('.assignedEmpls'); // when the user select an empl to reserve a certain room
+        // zoneEmpl.addEventListener('click', (e) => {
+        //     const selectedEmpl = e.target.closest('.Szone');
+        //     const clickedID = selectedEmpl.id;
+        //     localStorage.getItem(zoneReservations);
+        //     employees.forEach((empl) => {
+        //         if (empl.id === clickedID) {
+        //             console.log(empl);
+        //             zoneReservations.forEach((reservation) => {
+        //                 if(reservation.)
+        //             })
+        //             AssignedEmplContainer.forEach((container) => {
+        //                 if(container.classList.contains(selectedZoneID)){
+        //                     empl.isAssigned = true;
+        //                     container.innerHTML += `
+        //                         <div class="photo-circle selected" style="background-image: url(${empl.imgSRC});" ></div>
+        //                     `
+        //                 }
+
+        //             })
+        //         }
+        //     });
+        // });
+const zoneBtn = document.querySelectorAll('.zone-btn');
+const zoneEmpl = document.getElementById('zone-employees');
+let selectedZoneID = "";
+let SelectedZone = {};
+let zoneReservations = []; 
+
+localStorage.setItem("zoneReservations", JSON.stringify(zoneReservations)); 
+
+zoneBtn.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        zoneEmpl.innerHTML = "";
+        zoneEmpl.classList.remove('hidden');
+
+        // get selected zone
+        zones.forEach((zone) => {
+            if (e.target.id === zone.id) {
+                SelectedZone = zone;
+                selectedZoneID = zone.id;
+            }
+        });
+        // show zone name
+        zoneEmpl.innerHTML += `<p id="zoneName">${SelectedZone.id}</p>`;
+        employees.forEach((empl) => {
+            SelectedZone.access.forEach((elm) => {
+                if (empl.role === elm && empl.isAssigned === false ) {
+
+                    zoneEmpl.innerHTML += `
+                        <div id="${empl.id}" class="employee-header Szone">
+                            <div class="photo-circle" style="background-image: url(${empl.imgSRC});" ></div>
+                            <div class="employee-info">
+                                <div class="employee-name">${empl.firstName} ${empl.lastName}</div>
+                                <div class="employee-role">${empl.role}</div>
+                            </div>
+                        </div>
+                    `;
+                }
             })
         })
-        const SelectedEmployees = document.querySelectorAll('.Szone');
-        SelectedEmployees.forEach((sEmpl) => {
-            sEmpl.addEventListener('click', (e) => {
-                employees.forEach((empl) => {
-                    if(e.target.id === empl.id){
-                    console.log(empl);
+    });
+});
 
-                    }
-                })
-            })
-        })
 
+const AssignedEmplContainer = document.querySelectorAll('.assignedEmpls');
+
+// click on employee to reserve
+zoneEmpl.addEventListener('click', (e) => {
+    const selectedEmpl = e.target.closest('.Szone');
+    const clickedID = selectedEmpl.id;
+
+    // load reservations 
+    zoneReservations = JSON.parse(localStorage.getItem("zoneReservations")) || [];
+    employees.forEach((empl) => {
+        if (empl.id === clickedID) {
+            const countCapacity = zoneReservations.filter(r => r.zoneID === selectedZoneID).length;
+            if (countCapacity >= SelectedZone.capacity) {
+                alert("This room is already full!");
+                return; 
+            }
+            const newReservation = {
+                zoneID: selectedZoneID,
+                emplID: empl.id
+            };
+            zoneReservations.push(newReservation);
+            localStorage.setItem("zoneReservations", JSON.stringify(zoneReservations));
+            empl.isAssigned = true;
+            AssignedEmplContainer.forEach((container) => {
+                if (container.classList.contains(selectedZoneID)) {
+                    container.innerHTML += `
+                        <div class="photo-circle selected" style="background-image: url(${empl.imgSRC});"></div>
+                    `;
+                }
+            });
+        }
+    });
+});
 
         document.addEventListener('click',(e) => { //close the window if we clicked outside it
             if(!zoneEmpl.contains(e.target)){

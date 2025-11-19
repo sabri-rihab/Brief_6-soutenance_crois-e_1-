@@ -216,13 +216,13 @@
       "id": "conference_room",
       "name": "Conference Room",
       "access": ["Receptionist", "Manager", "Cleaning Staff", "IT Technician", "HR", "Accountant", "Security Agent"],
-      "capacity" : 10
+      "capacity" : 2
     },
     {
       "id": "server_room",
       "name": "Server Room",
       "access": ["IT Technician", "Manager"],
-      "capacity" : 10
+      "capacity" : 2
     },
     {
       "id": "reception",

@@ -403,27 +403,38 @@ body {
 }
 .zone-btn{
     border-radius: 50%;
-    /* background: #3b82f6; */
     color: #3b82f6;
     cursor: pointer;
     justify-self: center;
 }
-@media (max-width: 868px) {
+#zoneName{
+    text-align: center;
+    color: white;
+    background: rgba(52, 142, 167, 0.825);
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    padding: 2px;
+}
+@media (max-width: 750px) {
     .container {
         flex-direction: column;
-        /* padding: 0 1rem; */
     }
     .left-panel {
         width: 100%;
     }
 
     .right-panel {
-        min-height: 400px;
+        min-height: 300px;
         transform: rotate(90deg);
         margin-top: 10em;
     }
-    #zone-employees{
+    #zone-employees, .selected{
         transform: rotate(-90deg);
+    }
+}
+@media (max-width: 540px){
+    .right-panel{
+        min-height: 250px;
     }
 }
 
