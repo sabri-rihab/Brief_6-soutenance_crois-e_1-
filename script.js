@@ -281,39 +281,89 @@ zoneEmpl.addEventListener('click', (e) => {
         // Add Experience
         const addExpBtn = document.querySelector('.addExp-btn');
         const ExpContainer = document.querySelector('.experience-container');
-        let expCount = 1;
+        let expCount = 2;
         addExpBtn.addEventListener('click', () => {
-            expCount++;
             ExpContainer.innerHTML += `
-                            <div class="experience">
+                        <div class="experience">
                             <p class="expNum">Experience : ${expCount}</p>
                             <button class="close-btn">
                                 <span class="material-icons Delete-Exp-icon">close</span>
                             </button>
                             <div class="form-group full-width">
                                 <label class="required">Poste</label>
-                                <input id="poste" type="text" placeholder="Post Occupied..." required>
+                                <input id="poste${expCount}" classe="poste${expCount}" type="text" placeholder="Post Occupied..." required>
                             </div>
     
                             <div class="form-group full-width">
                                 <label class="required">Company</label>
-                                <input id="poste" type="text" placeholder="Post Occupied..." required>
+                                <input id="company${expCount}" classe="company${expCount}" type="text" placeholder="Post Occupied..." required>
                             </div>
     
                             <div class="form-group">
                                 <label class="required">From</label>
-                                <input id="from" type="date" placeholder="Post Occupied..." required>
+                                <input id="from${expCount}" classe="from${expCount}" type="date" placeholder="Post Occupied..." required>
                             </div>
     
                             <div class="form-group">
                                 <label class="required">To</label>
-                                <input id="to" type="date" placeholder="Post Occupied..." required>
+                                <input id="to${expCount}" classe="to${expCount}" type="date" placeholder="Post Occupied..." required>
                             </div>                         
                         </div>
             `
-        const DeleteExp = querySelectorAll('.Delete-Exp-icon');
-        
-        })
+            expCount++;
+
+            //delete an experience
+            const deleteExpBtn = document.querySelectorAll('.Delete-Exp-icon');
+            deleteExpBtn.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const parent = btn.closest('.experience');
+                    parent.remove();
+                })
+            })
+
+            // add employee
+            // function AddEmp(){
+                const firstN = document.getElementById('firstN');
+                const lastN = document.getElementById('lastN');
+                const email = document.getElementById('email');
+                const phone = document.getElementById('phone');
+                const img = document.getElementById('img');
+                const role = document.getElementById('selectRole');
+                const salle = document.getElementById('selectSalle');
+                let assigned = false;
+                // let id = 12;
+                let experiences = [];
+
+                if(!role.value){
+                    
+                }
+                for(let i=1; i<=expCount; i++){
+                    const poste = document.querySelector(`.poste${i}`);
+                    const company = document.querySelector(`.company${i}`);
+                    const from = document.querySelector(`.from${i}`);
+                    const to = document.querySelector(`.to${i}`);
+
+                    experiences.push({
+                        poste : poste,
+                        company : company,
+                        from: from,
+                        to : to
+                    })
+                }
+                if(salle.value !== ""){assigned = true}
+                employees.push({
+                    id : email,
+                    firstName : firstN,
+                    lastName : lastN,
+                    telephone : phone,
+                    imgSRC : img,
+                    role : role,
+                    isAssigned : assigned,
+                    assigned_place : salle, 
+                    experiences : experiences
+                })
+            // }
+           })
         
 
         console.log(data);

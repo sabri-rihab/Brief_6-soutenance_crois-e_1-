@@ -9,15 +9,7 @@
       "role": "IT Technician",
       "isAssigned": false,
       "assigned_place": "",
-      "experience": [
-        {
-          "id":1,
-          "post": "",
-          "company": "",
-          "from": "",
-          "to":""
-        }
-      ]
+      "experiences": []
     },
     {
       "id": "sarah@gmail.com",
@@ -28,15 +20,7 @@
       "role": "Receptionist",
       "isAssigned": false,
       "assigned_place": "",
-      "experience": [
-        {
-          "id":1,
-          "post": "",
-          "company": "",
-          "from": "",
-          "to":""
-        }
-      ]
+      "experiences": []
 
     },
     {
@@ -48,15 +32,7 @@
       "role": "Security Agent",
       "isAssigned": false,
       "assigned_place": "",
-      "experience": [
-        {
-          "id":1,
-          "post": "",
-          "company": "",
-          "from": "",
-          "to":""
-        }
-      ]
+      "experiences": []
     },
     {
       "id": "hajar@company.com",
@@ -67,15 +43,7 @@
       "role": "Cleaning Staff",
       "isAssigned": false,
       "assigned_place": "",
-      "experience": [
-        {
-          "id":1,
-          "post": "",
-          "company": "",
-          "from": "",
-          "to":""
-        }
-      ]
+      "experiences": []
     },
     {
       "id": "said@company.com",
@@ -86,15 +54,7 @@
       "role": "Manager",
       "isAssigned": false,
       "assigned_place": "",
-      "experience": [
-        {
-          "id":1,
-          "post": "",
-          "company": "",
-          "from": "",
-          "to":""
-        }
-      ]
+      "experiences": []
     },
     {
       "id": "mehdi@company.com",
@@ -105,15 +65,7 @@
       "role": "HR",
       "isAssigned": false,
       "assigned_place": "",
-      "experience": [
-        {
-          "id":1,
-          "post": "",
-          "company": "",
-          "from": "",
-          "to":""
-        }
-      ]
+      "experiences": []
     },
     {
       "id": "saadia@company.com",
@@ -124,15 +76,7 @@
       "role": "Accountant",
       "isAssigned": false,
       "assigned_place": "",
-      "experience": [
-        {
-          "id":1,
-          "post": "",
-          "company": "",
-          "from": "",
-          "to":""
-        }
-      ]
+      "experiences": []
     },
     {
       "id": "nadia@company.com",
@@ -143,15 +87,7 @@
       "role": "IT Technician",
       "isAssigned": false,
       "assigned_place": "",
-      "experience": [
-        {
-          "id":1,
-          "post": "",
-          "company": "",
-          "from": "",
-          "to":""
-        }
-      ]
+      "experiences": []
     },
     {
       "id": "amin@company.com",
@@ -162,15 +98,7 @@
       "role": "Receptionist",
       "isAssigned": false,
       "assigned_place": "",
-      "experience": [
-        {
-          "id":1,
-          "post": "",
-          "company": "",
-          "from": "",
-          "to":""
-        }
-      ]
+      "experiences": []
     },
     {
       "id": "youssef@company.com",
@@ -181,15 +109,7 @@
       "role": "Security Agent",
       "isAssigned": false,
       "assigned_place": "",
-      "experience": [
-        {
-          "id":1,
-          "post": "",
-          "company": "",
-          "from": "",
-          "to":""
-        }
-      ]
+      "experiences": []
     },
     {
       "id": "douaa@company.com",
@@ -200,15 +120,7 @@
       "role": "Cleaning Staff",
       "isAssigned": false,
       "assigned_place": "security_room",
-      "experience": [
-        {
-          "id":1,
-          "post": "",
-          "company": "",
-          "from": "",
-          "to":""
-        }
-      ]
+      "experiences": []
     }
   ],
   "zones": [
@@ -216,7 +128,7 @@
       "id": "conference_room",
       "name": "Conference Room",
       "access": ["Receptionist", "Manager", "Cleaning Staff", "IT Technician", "HR", "Accountant", "Security Agent"],
-      "capacity" : 2
+      "capacity" : 4
     },
     {
       "id": "server_room",
@@ -228,25 +140,25 @@
       "id": "reception",
       "name": "Reception",
       "access": ["Receptionist", "Manager", "Cleaning Staff"],
-      "capacity" : 10
+      "capacity" : 6
     },
     {
       "id": "security_room",
       "name": "Security Room",
       "access": ["Security Agent", "Manager"],
-      "capacity" : 10
+      "capacity" : 3
     },
     {
       "id": "staff_room",
       "name": "Staff Room",
       "access": ["Receptionist", "Manager", "Cleaning Staff", "IT Technician", "HR", "Accountant"],
-      "capacity" : 10
+      "capacity" : 6
     },
     {
       "id": "archives",
       "name": "Archives Room",
       "access": ["Manager", "IT Technician"],
-      "capacity" : 10
+      "capacity" : 2
     }
   ],
   "roles": [
