@@ -276,6 +276,46 @@ zoneEmpl.addEventListener('click', (e) => {
             DetailsEmp.classList.add('hidden');
         })
 
+
+
+        // Add Experience
+        const addExpBtn = document.querySelector('.addExp-btn');
+        const ExpContainer = document.querySelector('.experience-container');
+        let expCount = 1;
+        addExpBtn.addEventListener('click', () => {
+            expCount++;
+            ExpContainer.innerHTML += `
+                            <div class="experience">
+                            <p class="expNum">Experience : ${expCount}</p>
+                            <button class="close-btn">
+                                <span class="material-icons Delete-Exp-icon">close</span>
+                            </button>
+                            <div class="form-group full-width">
+                                <label class="required">Poste</label>
+                                <input id="poste" type="text" placeholder="Post Occupied..." required>
+                            </div>
+    
+                            <div class="form-group full-width">
+                                <label class="required">Company</label>
+                                <input id="poste" type="text" placeholder="Post Occupied..." required>
+                            </div>
+    
+                            <div class="form-group">
+                                <label class="required">From</label>
+                                <input id="from" type="date" placeholder="Post Occupied..." required>
+                            </div>
+    
+                            <div class="form-group">
+                                <label class="required">To</label>
+                                <input id="to" type="date" placeholder="Post Occupied..." required>
+                            </div>                         
+                        </div>
+            `
+        const DeleteExp = querySelectorAll('.Delete-Exp-icon');
+        
+        })
+        
+
         console.log(data);
         console.log(zones);
         console.log(employees);

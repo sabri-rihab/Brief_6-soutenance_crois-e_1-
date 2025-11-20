@@ -179,7 +179,7 @@
       "telephone": "0709988774",
       "imgSRC": "assets/profile_10.jpg",
       "role": "Security Agent",
-      "isAssigned": true,
+      "isAssigned": false,
       "assigned_place": "",
       "experience": [
         {
