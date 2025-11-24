@@ -63,7 +63,7 @@
       "telephone": "0703344556",
       "imgSRC": "assets/profile_6.jpg",
       "role": "HR",
-      "isAssigned": false,
+      "isAssigned": true,
       "assigned_place": "",
       "experiences": []
     },

@@ -125,6 +125,7 @@ async function ManageWorkSpace() {
     });
 
     const AssignedEmplContainer = document.querySelectorAll(".assignedEmpls");
+    const detailsEmplContainer = document.querySelector(".details");
 
     //calling the details spans
     const imgDetail = document.querySelector(".imageDetails");
@@ -137,7 +138,6 @@ async function ManageWorkSpace() {
     zoneEmpl.addEventListener("click", (e) => {
       const selectedEmpl = e.target.closest(".Szone");
       const clickedID = selectedEmpl.id;
-      const detailsEmplContainer = document.querySelector(".details");
 
       // load reservations
       zoneReservations =

@@ -699,7 +699,6 @@ select {
 
 #assignedState {
     color: white;
-    background: rgb(242, 89, 89);
     width: 7rem;
     padding: 2px;
     text-align: center;
