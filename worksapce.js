@@ -294,7 +294,7 @@ async function loadData() {
       });
     }
 
-    let expCount = 1;
+    let expCount = 2;
     let experiences = [];
     const ExpContainer = document.querySelector(".experience-container");
     const backgroungDiv = document.querySelector(".backgroungDiv");
@@ -304,8 +304,7 @@ async function loadData() {
     function createExperienceForm() {
       // ExpContainer.insertAdjacentHTML(
       //   "beforeend",
-      return
-      `
+      return`
                                     <div class="experience">
                                         <p class="expNum">Experience : ${expCount}</p>
                                         <button class="close-btn">
