@@ -120,7 +120,12 @@
       "role": "Cleaning Staff",
       "isAssigned": false,
       "assigned_place": "security_room",
-      "experiences": []
+      "experiences": [
+        {"company": "OCP",
+        "poste": "manager",
+        "from": "2020-10-11",
+        "to" : "2021-12-06"
+      }]
     }
   ],
   "zones": [

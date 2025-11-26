@@ -97,7 +97,74 @@ body {
     .container {
         gap: 0
     }
+
+    .detailsEmpl {
+        width: 500px;
+        height: 480px;
+
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left-panel {
+        width: 100%;
+    }
+
+    .right-panel {
+        min-height: 300px;
+        height: auto;
+        transform: rotate(90deg);
+        margin-top: 10em;
+        width: 35rem;
+    }
+
+    .right-panel img {
+        /* min-height: 100%; */
+        height: 100%;
+        width: 700px;
+    }
+
+    #zone-employees {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) rotate(-90deg) !important;
+        margin: 0 !important;
+        /* margin-bottom: 50rem; */
+    }
+
+    .selected {
+        transform: rotate(-90deg);
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .selected:hover {
+        transform: rotate(-90deg) translateY(-15px);
+        transition: transform 0.3s ease-in;
+    }
+
+    .assignedEmpls {
+        height: 6rem;
+    }
+
+    .rooms-container {
+        min-height: 100%;
+        min-width: 700px;
+    }
+
+    .form-container {
+        max-width: 30rem;
+        max-height: 35rem;
+    }
+
 }
+
+
+
 
 @media (max-width: 480px) {
     .hero-title {
@@ -112,6 +179,34 @@ body {
     .hero-button {
         padding: 0.9rem 2rem;
         font-size: 1rem;
+    }
+
+    .detailsEmpl {
+        width: 300px;
+    }
+
+    .right-panel {
+        margin-top: 3rem;
+        padding-bottom: 1rem;
+        justify-self: center;
+    }
+
+    .right-panel img {
+        height: auto;
+    }
+
+    .rooms-container {
+        height: 300px;
+        padding-bottom: 20px;
+    }
+
+    .form-group {
+        grid-column: 1 / -1;
+    }
+
+    .form-container {
+        max-width: 25rem;
+        max-height: 30rem;
     }
 }
 
@@ -136,6 +231,11 @@ body {
     height: auto;
     /* justify-content: center;
     align-items: center; */
+}
+.expBloc{
+    border: 1px solid black;
+    margin-top: 2rem;
+    padding: 1rem;
 }
 
 .left-panel {
@@ -243,7 +343,8 @@ body {
     background-position: center;
     background-repeat: no-repeat;
 }
-.deleteEmplfromZone{
+
+.deleteEmplfromZone {
     font-size: 13px;
     color: white;
     background: red;
@@ -422,24 +523,27 @@ body {
 .conference {
     grid-row: 1;
     grid-column: 1 / 6;
-    background-color: rgba(255, 255, 0, 0.439);
+    /* background-color: rgba(255, 255, 0, 0.439); */
 }
 
-.archives {
+.archivesZ {
     grid-row: 1;
     grid-column: 8 / 11;
+    background: rgba(182, 69, 69, 0.651);
     /* background-color: rgba(128, 0, 128, 0.445); */
 }
 
 .security {
     grid-row: 1;
     grid-column: 11 / 14;
+    background: rgba(182, 69, 69, 0.651);
     /* background-color: rgba(255, 255, 0, 0.439); */
 }
 
-.reception {
+.receptionZ {
     grid-row: 2 / 4;
     grid-column: 1 / 6;
+    background: rgba(182, 69, 69, 0.651);
     /* background-color: rgba(128, 0, 128, 0.445); */
 }
 
@@ -453,6 +557,7 @@ body {
 .server {
     grid-row: 3;
     grid-column: 11 / 14;
+    background: rgba(182, 69, 69, 0.651);
     /* background-color: rgba(128, 0, 128, 0.445); */
 }
 
@@ -509,8 +614,8 @@ body {
 .detailsEmpl {
     border-radius: 15px;
     background: white;
-    width: 300px;
-    height: 280px;
+    width: 700px;
+    height: 680px;
     padding: 1.5rem;
     position: absolute;
     top: 50%;
@@ -518,6 +623,14 @@ body {
     transform: translate(-50%, -50%);
     z-index: 10;
     box-shadow: 0px 0px 28px 0px rgb(139, 139, 139);
+    overflow: auto;
+}
+
+.imageDetails {
+    height: 300px;
+    width: 230px;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .assignedEmpls {
@@ -529,94 +642,6 @@ body {
     align-items: center;
     overflow: auto;
 }
-
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .left-panel {
-        width: 100%;
-    }
-
-    .right-panel {
-        min-height: 300px;
-        height: auto;
-        transform: rotate(90deg);
-        margin-top: 10em;
-        width: 35rem;
-    }
-
-    .right-panel img {
-        /* min-height: 100%; */
-        height: 100%;
-        width: 700px;
-    }
-
-    #zone-employees {
-        position: absolute !important;
-        top: 50% !important;
-        left: 50% !important;
-        transform:translate(-50%, -50%) rotate(-90deg)!important;
-        margin: 0 !important;
-        /* margin-bottom: 50rem; */
-    }
-
-    .selected {
-        transform: rotate(-90deg);
-        width: 2.5rem;
-        height: 2.5rem;
-    }
-
-    .selected:hover {
-        transform: rotate(-90deg) translateY(-15px);
-        transition: transform 0.3s ease-in;
-    }
-
-    .assignedEmpls {
-        height: 6rem;
-    }
-
-    .rooms-container {
-        min-height: 100%;
-        min-width: 700px;
-    }
-
-    .form-container {
-        max-width: 30rem;
-        max-height: 35rem;
-    }
-
-}
-
-@media (max-width: 480px) {
-    .right-panel {
-        margin-top: 3rem;
-        padding-bottom: 1rem;
-        justify-self: center;
-    }
-
-    .right-panel img {
-        height: auto;
-    }
-
-    .rooms-container {
-        height: 300px;
-        padding-bottom: 20px;
-    }
-
-    .form-group {
-        grid-column: 1 / -1;
-    }
-
-    .form-container {
-        max-width: 25rem;
-        max-height: 30rem;
-    }
-
-}
-
 
 
 

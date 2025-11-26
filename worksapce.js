@@ -3,7 +3,7 @@ async function loadData() {
     const res = await fetch("data.json");
     const data = await res.json();
 
-    const employees = data.employees;
+    let employees = data.employees;
     const zones = data.zones;
     const roles = data.roles;
 
@@ -12,6 +12,8 @@ async function loadData() {
     let selectedZoneID = "";
     let zoneReservations = [];
     let clickedEmplID;
+
+    let isValideExp = true;
 
     const zoneEmpl = document.getElementById("zone-employees");
 
@@ -91,7 +93,7 @@ async function loadData() {
     /*--------------------------    MAKE RESERVATION    ----------------------- */
     function makeReservation() {
       const AssignedEmplContainer = document.querySelectorAll(".assignedEmpls");
-      const zoneReservations =
+      zoneReservations =
         JSON.parse(localStorage.getItem("zoneReservations")) || [];
       const countCapacity = checkZoneCapacity();
 
@@ -123,17 +125,20 @@ async function loadData() {
           });
         }
       });
+      // console.log("les reservation actuels", zoneReservations);
+
       deleteEmplFromAZone();
       displayEmployees(Filtered);
+      zoneColorChange();  
+
     }
 
     /*--------------------------------------  DELETE EMPLOYEE FROM A ZONE ------------------------------------- */
     function deleteEmplFromAZone() {
       const DeleteButtons = document.querySelectorAll(".deleteEmplfromZone");
-      console.log(DeleteButtons);
       DeleteButtons.forEach((btn) => {
         btn.addEventListener("click", (e) => {
-          e.stopPropagation(); 
+          e.stopPropagation();
           const emplID = btn.closest(".selected").id;
           const emplIconInZone = btn.closest(".selected");
           employees.forEach((empl) => {
@@ -144,23 +149,23 @@ async function loadData() {
               displayEmployees(Filtered);
             }
           });
-          let zoneReservations =
-            // JSON.parse(localStorage.getItem(zoneReservations)) || [];
+          zoneReservations =
+            JSON.parse(localStorage.getItem("zoneReservations")) || [];
           zoneReservations = zoneReservations.filter(
             (r) => r.emplID !== emplID
           );
-          // localStorage.setItem(
-          //   "zoneReservations",
-          //   JSON.stringify(zoneReservations)
-          // );
+          localStorage.setItem(
+            "zoneReservations",
+            JSON.stringify(zoneReservations)
+          );
 
           const currentCapacity = checkZoneCapacity();
           if (currentCapacity < SelectedZone.capacity) {
             document.getElementById(selectedZoneBtn).classList.remove("hidden");
           }
+          zoneColorChange()
         });
       });
-
     }
     /*--------------------------------------    SHOW EMPLOYEE DETAILS (CV)  --------------------------------- */
     const detailsEmplContainer = document.querySelector(".details");
@@ -175,12 +180,15 @@ async function loadData() {
 
     function showDetails() {
       const selectedEmpls = document.querySelectorAll(".selected");
+      const expContaine = document.querySelector(".emp_experiencesDetails");
 
       selectedEmpls.forEach((sEmpl) => {
         sEmpl.addEventListener("click", (event) => {
           const TheEmplID = event.target.closest(".selected").id;
           const TheEmpl = employees.find((empl) => empl.id === TheEmplID);
+
           console.log(TheEmpl);
+
           detailsEmplContainer.classList.remove("hidden");
           imgDetail.style.backgroundImage = `url(${TheEmpl.imgSRC})`;
           nameDetail.innerHTML = `${TheEmpl.firstName} ${TheEmpl.lastName}`;
@@ -188,6 +196,18 @@ async function loadData() {
           emailDetail.innerHTML = `${TheEmpl.id}`;
           phoneDetail.innerHTML = `${TheEmpl.telephone}`;
           zoneDetail.innerHTML = `${TheEmpl.assigned_place}`;
+
+          expContaine.innerHTML = "";
+          TheEmpl.experiences.forEach((exp) => {
+            expContaine.innerHTML += `
+              <div class="expBloc">
+                <p><b>Poste</b> : ${exp.poste}</p>
+                <p><b>Company</b> : ${exp.company}</p>
+                <p><b>From</b> : ${exp.from}</p>
+                <p><b>To</b> : ${exp.to}</p>
+              </div>
+            `;
+          });
         });
       });
       closeDetailsWindow();
@@ -201,10 +221,10 @@ async function loadData() {
       });
     }
 
-    /*======================================================================================================== */
-    /* -------------------------    DISPLAY EMPLOYEES    ---------------------------- */
+    /* ------------------------------    DISPLAY EMPLOYEES    ------------------------------- */
 
     const employees_container = document.querySelector(".employees-section");
+
     function displayEmployees(empls) {
       employees_container.innerHTML = "";
       empls.forEach((empl) => {
@@ -215,13 +235,13 @@ async function loadData() {
           assignedState = "Assigned";
           assignedColor = "rgb(75, 156, 75)";
         }
+        // <button class="edit-btn">
+        //     <span class="material-icons">edit</span>
+        // </button>
         employees_container.innerHTML += `
                         <div id="${empl.id}" class="employee-card">
                             <button class="close-btn">
-                                <span class="material-icons">close</span>
-                            </button>
-                            <button class="edit-btn">
-                                <span class="material-icons">edit</span>
+                                <span class="material-icons deleteEmployee">close</span>
                             </button>
                             <div class="employee-header">
                                 <div class="photo-circle" style="background-image: url(${empl.imgSRC});" ></div>
@@ -270,9 +290,9 @@ async function loadData() {
 
     /* -------------------------    OPENING/CLOSING ADD FORM    +   DYNAMIQUE SLECT ZONE/ROLE    ---------------------------- */
 
+    const TheFormOfAdd = document.querySelector(".form-container");
     function addForm() {
       const addBtn_call = document.querySelector(".add-employee-btn");
-      const addForm = document.querySelector(".form-container");
       addBtn_call.addEventListener("click", () => {
         backgroungDiv.classList.remove("hidden");
       });
@@ -304,7 +324,7 @@ async function loadData() {
     function createExperienceForm() {
       // ExpContainer.insertAdjacentHTML(
       //   "beforeend",
-      return`
+      return `
                                     <div class="experience">
                                         <p class="expNum">Experience : ${expCount}</p>
                                         <button class="close-btn">
@@ -334,7 +354,8 @@ async function loadData() {
       // );
     }
 
-    /* -------------------------    ADDING/DELETING EXPERIENCE    ---------------------------- */
+    /* ==============================    ADDING/DELETING EXPERIENCE   ============================ */
+    /*--------------------------    ADD EXPERIENCE    ----------------------------------- */
 
     function AddExperiences() {
       const addExpBtn = document.querySelector(".addExp-btn");
@@ -344,7 +365,6 @@ async function loadData() {
         DeleteExperience();
       });
     }
-
     /*--------------------------    DELET EXPERIENCE    ----------------------------------- */
     function DeleteExperience() {
       const deleteExpBtn = document.querySelectorAll(".Delete-Exp-icon");
@@ -417,47 +437,145 @@ async function loadData() {
       }
       return experiences;
     }
+    document
+      .querySelector(".experience-container")
+      .addEventListener("input", experienceInputValidation);
+
+    /*------------------------- Experiences inputs validation ------------------------------ */
+    function experienceInputValidation() {
+      const experiences = document.querySelectorAll(".experience");
+      for (const exp of experiences) {
+        const poste = exp.querySelector(".poste");
+        const company = exp.querySelector(".company");
+        const from = exp.querySelector(".from");
+        const to = exp.querySelector(".to");
+
+        if (
+          !regex.poste.test(poste.value) ||
+          !regex.company.test(company.value) ||
+          new Date(from.value) > new Date(to.value)
+        ) {
+          isValideExp = false;
+          document.getElementById("errorMsg").innerHTML =
+            "Your informations are incorrect!";
+        } else {
+          isValideExp = true;
+          document.getElementById("errorMsg").innerHTML = "";
+        }
+      }
+    }
+    /* -------------------------    FORM VALIDATION    ---------------------------- */
+
+    const regex = {
+      // firstN : /^[a-z]{3,25}(\s[a-z]{3,25})?$/i,
+      firstN: /^[A-Z]?[a-z]{3,25}(\s[A-Z]?[a-z]{3,25})?$/,
+      lastN: /^[a-z]{3,25}(\s[a-z]{3,25})?$/i,
+      email: /^[a-z\d.!#$%&'*+-/=?^_]{5,}@[a-z]{4,}.[a-z]{2,}$/i,
+      phone: /^0[5-7][0-9]{8}$/,
+      poste: /^[a-z]{2,}$/i,
+      company: /^[a-z&@^'!\d]{2,}(\s[a-z]+)*$/i,
+      img: /^[^\0\s]*$/,
+      selectRole: /^[^\0]*$/,
+    };
+
+    document.getElementById("form").addEventListener("input", (e) => {
+      let input = e.target;
+      if (!regex[input.getAttribute("id")].test(input.value)) {
+        input.style.borderColor = "red";
+      } else {
+        input.style.borderColor = "#dee2e6";
+      }
+    });
 
     /* -------------------------    ADD EMPLOYEE    ---------------------------- */
     function AddEmployee() {
       const addEmplBtn = document.querySelector(".submit-btn");
-
       addEmplBtn.addEventListener("click", () => {
-        const firstName = document.getElementById("firstN");
-        const lastName = document.getElementById("lastN");
-        const email = document.getElementById("email");
-        const phone = document.getElementById("phone");
-        let img = document.getElementById("img");
-        const role = document.getElementById("selectRole");
-        const salle = document.getElementById("selectSalle");
+        let isValide = true;
+        document.querySelectorAll("#form input").forEach((input) => {
+          if (!regex[input.getAttribute("id")].test(input.value)) {
+            isValide = false;
+          }
+        });
+        if (isValide && isValideExp) {
+          const firstName = document.getElementById("firstN");
+          const lastName = document.getElementById("lastN");
+          const email = document.getElementById("email");
+          const phone = document.getElementById("phone");
+          let img = document.getElementById("img");
+          const role = document.getElementById("selectRole");
+          const salle = document.getElementById("selectSalle");
 
-        let assigned = false;
-        const experiences = getExperiencesValue();
+          let assigned = false;
+          const experiences = getExperiencesValue();
 
-        if (salle.value !== "") {
-          assigned = true;
+          if (salle.value !== "") {
+            assigned = true;
+          }
+          const newEmployee = {
+            id: email.value,
+            firstName: firstName.value,
+            lastName: lastName.value,
+            telephone: phone.value,
+            imgSRC: img.value || "assets/defaultProfile.jpg",
+            role: role.value,
+            isAssigned: assigned,
+            assigned_place: salle.value,
+            experiences: experiences,
+          };
+          employees.push(newEmployee);
+          resetForm();
+          backgroungDiv.classList.add("hidden");
+          displayEmployees(Filtered);
+
+          console.log("new emloyee", newEmployee);
+          console.log("new emloyee experiences", newEmployee.experiences);
+          console.log("all empls", employees);
+        } else {
+          alert("Error: invalid values.");
+          return;
         }
-        const newEmployee = {
-          id: email.value,
-          firstName: firstName.value,
-          lastName: lastName.value,
-          telephone: phone.value,
-          imgSRC: img.value || "assets/defaultProfile.jpg",
-          role: role.value,
-          isAssigned: assigned,
-          assigned_place: salle.value,
-          experiences: experiences,
-        };
-        employees.push(newEmployee);
-        resetForm();
-        backgroungDiv.classList.add("hidden");
-        displayEmployees(Filtered);
-
-        console.log("new emloyee", newEmployee);
-        console.log("new emloyee experiences", newEmployee.experiences);
-        console.log("all empls", employees);
       });
     }
+
+    /*---------------------------------------  Forme validation ------------------------------------ */
+    // function FormValidation(input, regex) {
+    //   if (!regex.test(input)) {
+    //     isValide = false;
+    //   }
+    // }
+
+    /*----------------------------------  Delete Employee ---------------------------------------------- */
+    function DeleteNotAssignedEmployee() {
+      employees_container.addEventListener("click", (e) => {
+        if (e.target.classList.contains("deleteEmployee")) {
+          const emplID = e.target.closest(".employee-card").id;
+          const emplCard = e.target.closest(".employee-card");
+          const empl = employees.find((e) => e.id === emplID);
+          if (empl.isAssigned === false) {
+            employees = employees.filter((e) => e.id !== emplID);
+            emplCard.remove();
+          }
+        }
+      });
+    }
+    /*--------------------------------- change zone color if not empty  ------------------------ */
+
+     function zoneColorChange(){
+      zoneReservations = JSON.parse(localStorage.getItem("zoneReservations")) || [];
+      const rooms = ["server_room", "reception", "security_room", "archives"]
+      
+      zoneReservations.forEach((r) => {
+        for(let room of rooms){
+          if(r.zoneID === room) {
+            document.getElementsByClassName(room)[0].closest('.zone').style.backgroundColor = 'rgba(57, 171, 99, 0.651)';
+        }
+        else{
+          document.getElementsByClassName(room)[0].closest('.zone').style.backgroundColor = 'rgba(182, 69, 69, 0.651)';
+        }
+        }
+      })
+         }
 
     /*--------------------------------------------------------------------------------------------------- */
     document.addEventListener("click", (e) => {
@@ -466,7 +584,7 @@ async function loadData() {
         zoneEmpl.classList.add("hidden");
       }
     });
-
+    
     // CALL ALL FUNCTIONS
     emplMenu();
     addForm();
@@ -476,6 +594,8 @@ async function loadData() {
     AddExperiences();
     DeleteExperience();
     AddEmployee();
+    DeleteNotAssignedEmployee();
+    console.log(zoneReservations);
   } catch (error) {
     console.error("Failed to load DATA!", error);
   }

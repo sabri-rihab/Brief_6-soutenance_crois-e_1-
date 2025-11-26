@@ -53,8 +53,10 @@
 
                 <h1>Add New Employee</h1>
                 <p class="subtitle">fields with * are required</p>
+                <p class="subtitle" id="errorMsg"></p>
 
-                <form class="form-grid">
+
+                <form class="form-grid" id="form">
                     <div class="form-group">
                         <label class="required">First Name</label>
                         <input id="firstN" type="text" placeholder="first name..." required />
@@ -83,7 +85,6 @@
                     <div class="default">
                         <img src="assets/defaultProfile.jpg" class="image" alt="" />
                     </div>
-                    <!-- <div class="default" style="background-image: url(assets/defaultProfile.jpg);" ></div> -->
 
                     <div class="form-group full-width">
                         <label class="required">Role</label>
@@ -99,32 +100,32 @@
                         </select>
                     </div>
                 </form>
-                <form class="experience-container">
+                <div class="experience-container" id="experience">
                     <div class="experience">
                         <p class="expNum">Experience : 1</p>
                         <div class="form-group full-width">
                             <label class="required">Poste</label>
-                            <input id="poste1" type="text" placeholder="Post Occupied..." required />
+                            <input class="poste" id="poste1" type="text" placeholder="Post Occupied..." required />
                         </div>
 
                         <div class="form-group full-width">
                             <label class="required">Company</label>
-                            <input id="company1" type="text" placeholder="Post Occupied..." required />
+                            <input class="company" id="company1" type="text" placeholder="Post Occupied..." required />
                         </div>
 
                         <div class="form-group">
                             <label class="required">From</label>
-                            <input id="from1" type="date" placeholder="Post Occupied..." required />
+                            <input class="from" id="from1" type="date" placeholder="Post Occupied..." required />
                         </div>
 
                         <div class="form-group">
                             <label class="required">To</label>
-                            <input id="to1" type="date" placeholder="Post Occupied..." required />
+                            <input class="to" id="to1" type="date" placeholder="Post Occupied..." required />
                         </div>
                     </div>
-                </form>
-                <button type="submit" class="addExp-btn">Add Experience</button>
+                </div>
                 <button type="submit" class="submit-btn">Add</button>
+                <button class="addExp-btn">Add Experience</button>
             </div>
         </div>
         <!-- Right Panel -->
@@ -138,7 +139,7 @@
                     <div class="assignedEmpls conference_room"></div>
                     <span id="conference_room" class="zone-btn material-icons">add_circle</span>
                 </div>
-                <div class="zone archives">
+                <div class="zone archivesZ">
                     <div class="assignedEmpls archives"></div>
                     <span id="archives" class="zone-btn material-icons">add_circle</span>
                 </div>
@@ -146,7 +147,7 @@
                     <div class="assignedEmpls security_room"></div>
                     <span id="security_room" class="zone-btn material-icons">add_circle</span>
                 </div>
-                <div class="zone reception">
+                <div class="zone receptionZ">
                     <div class="assignedEmpls reception"></div>
                     <span id="reception" class="zone-btn material-icons">add_circle</span>
                 </div>
@@ -166,11 +167,11 @@
         <div class="detailsEmpl">
             <span class="material-icons details-close">close</span>
 
-            <div id="${empl.id}" class="employee-header Szone">
-                <div class="photo-circle imageDetails" style="background-image: url(assets/profile_10.jpg)"></div>
+            <div class="employee-header">
+                <div class="imageDetails" style="background-image: url(assets/profile_10.jpg)"></div>
                 <div class="employee-info">
-                    <div class="employee-name nameDetails"></div>
-                    <div class="employee-role roleDetails"></div>
+                    <h1 class="nameDetails"></h1>
+                    <h2 class="roleDetails"></h2>
                 </div>
             </div>
 
@@ -178,18 +179,21 @@
                 <div class="detail-item">
                     <span class="material-icons">mail</span>
                     <span class="detail-label">Email : </span>
-                    <span class="detail-value emailDetails"></span>
+                    <span class="emailDetails"></span>
                 </div>
                 <div class="detail-item">
                     <span class="material-icons">call</span>
                     <span class="detail-label">Phone :</span>
-                    <span class="detail-value phoneDetails">0622113344</span>
+                    <span class="phoneDetails">0622113344</span>
                 </div>
                 <div class="detail-item">
                     <span class="material-icons">location_on</span>
                     <span class="detail-label">Assigned Zone :</span>
-                    <span class="detail-value zoneDetails"></span>
+                    <span class="zoneDetails"></span>
                 </div>
+            </div>
+            <div class="emp_experiencesDetails">
+                
             </div>
 
             <div class="employee-links">
