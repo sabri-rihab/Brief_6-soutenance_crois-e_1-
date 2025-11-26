@@ -14,6 +14,7 @@ async function loadData() {
     let clickedEmplID;
 
     let isValideExp = true;
+    const rooms = ["server_room", "reception", "security_room", "archives"];
 
     const zoneEmpl = document.getElementById("zone-employees");
 
@@ -40,11 +41,14 @@ async function loadData() {
     /*-------------------   get selected  employee id   ----------------------------------------   */
     function SelectedEmployee() {
       zoneEmpl.addEventListener("click", (e) => {
-        const selectedEmpl = e.target.closest(".Szone");
-        clickedEmplID = selectedEmpl.id;
-        makeReservation();
-        // showAvailableEmployees();
-        zoneEmpl.classList.add("hidden");
+        if (e.target.closest(".Szone")) {
+          const selectedEmpl = e.target.closest(".Szone");
+
+          clickedEmplID = selectedEmpl.id;
+          makeReservation();
+          // showAvailableEmployees();
+          zoneEmpl.classList.add("hidden");
+        }
       });
     }
     /*-------------------------------   SELECT CLICKED ZONE     ------------------------------------------ */
@@ -129,8 +133,41 @@ async function loadData() {
 
       deleteEmplFromAZone();
       displayEmployees(Filtered);
-      zoneColorChange();  
+      zoneColorChange();
+    }
+    /*--------------------------------- change zone color if not empty  ------------------------ */
 
+    function zoneColorChange() {
+      zoneReservations =
+        JSON.parse(localStorage.getItem("zoneReservations")) || [];
+
+      zoneReservations.forEach((r) => {
+        for (let room of rooms) {
+          if (r.zoneID === room) {
+            document
+              .getElementsByClassName(room)[0]
+              .closest(".zone").style.backgroundColor =
+              "rgba(57, 171, 99, 0.651)";
+          }
+        }
+      });
+    }
+
+
+    /*----------  check zone if empty ---------------- */
+
+    
+    function Check_if_zone_empty(Id_zone) {
+      let check = false;
+      const parent_div = document.querySelector(`#${Id_zone}`);
+      // console.log(parent_div);
+      const all_employees = parent_div.querySelectorAll(".selected");
+      // console.log(all_employees.length-1);
+      let size = all_employees.length - 1;
+      if (size == 0) {
+        check = true;
+      }
+      return check;
     }
 
     /*--------------------------------------  DELETE EMPLOYEE FROM A ZONE ------------------------------------- */
@@ -138,6 +175,17 @@ async function loadData() {
       const DeleteButtons = document.querySelectorAll(".deleteEmplfromZone");
       DeleteButtons.forEach((btn) => {
         btn.addEventListener("click", (e) => {
+          const Zone_target_id = e.target.closest(".zone").id;
+          // console.log(Zone_target_id);
+          if (rooms.includes(Zone_target_id)) {
+            console.log("valide valide");
+            let check = Check_if_zone_empty(Zone_target_id);
+            if (check) {
+              document.getElementById(Zone_target_id).style.backgroundColor =
+                "rgba(182, 69, 69, 0.651)";
+            }
+          }
+
           e.stopPropagation();
           const emplID = btn.closest(".selected").id;
           const emplIconInZone = btn.closest(".selected");
@@ -163,7 +211,7 @@ async function loadData() {
           if (currentCapacity < SelectedZone.capacity) {
             document.getElementById(selectedZoneBtn).classList.remove("hidden");
           }
-          zoneColorChange()
+          zoneColorChange();
         });
       });
     }
@@ -559,23 +607,6 @@ async function loadData() {
         }
       });
     }
-    /*--------------------------------- change zone color if not empty  ------------------------ */
-
-     function zoneColorChange(){
-      zoneReservations = JSON.parse(localStorage.getItem("zoneReservations")) || [];
-      const rooms = ["server_room", "reception", "security_room", "archives"]
-      
-      zoneReservations.forEach((r) => {
-        for(let room of rooms){
-          if(r.zoneID === room) {
-            document.getElementsByClassName(room)[0].closest('.zone').style.backgroundColor = 'rgba(57, 171, 99, 0.651)';
-        }
-        else{
-          document.getElementsByClassName(room)[0].closest('.zone').style.backgroundColor = 'rgba(182, 69, 69, 0.651)';
-        }
-        }
-      })
-         }
 
     /*--------------------------------------------------------------------------------------------------- */
     document.addEventListener("click", (e) => {
@@ -584,7 +615,7 @@ async function loadData() {
         zoneEmpl.classList.add("hidden");
       }
     });
-    
+
     // CALL ALL FUNCTIONS
     emplMenu();
     addForm();
